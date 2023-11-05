@@ -142,7 +142,7 @@ The EB environment can be terminated with the following command:
 eb terminate churn-prediction-env
 ```
 
-See below a screen recording of the deployment to Elastic Beanstalk:
+Here is a screen recording showing the deployment to Elastic Beanstalk:
 
 https://github.com/jimmy3142/ml-zoomcamp-2023-projects/assets/65279092/c6d79b68-61ec-4611-b40e-d2eaf254f725
 
