@@ -45,7 +45,7 @@ A list of software used to build the application and ML concepts used.
 * Gradient Boosting (XGBoost)
 
 
-## Local setup <a name = "Local_setup"></a>
+## Local setup <a name = "local_setup"></a>
 <!---
 A step by step series of instruction that tells you how to get the application running locally.
 -->
@@ -110,7 +110,7 @@ curl -X POST -H "Content-Type: application/json" -d @data/example_customer.json 
 ```
 
 
-## 🚀 Deploying to the cloud <a name = "cloud_deployment"></a>
+## 🚀  Deploying to the cloud <a name = "cloud_deployment"></a>
 <!---
 Add additional notes about how to deploy this application to the cloud.
 -->
