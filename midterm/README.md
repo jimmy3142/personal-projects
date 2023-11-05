@@ -144,6 +144,9 @@ eb terminate churn-prediction-env
 
 See below a screen recording of the deployment to Elastic Beanstalk:
 
+https://github.com/jimmy3142/ml-zoomcamp-2023-projects/assets/65279092/c6d79b68-61ec-4611-b40e-d2eaf254f725
+
+
 
 ## Prediction Results <a name = "prediction_results"></a>
 | Model                      | Validation Set Accuracy | Test Set Accuracy |
