@@ -1,21 +1,21 @@
 # Bank customer churn prediction
 
 
-# Table of Contents
+## Table of Contents
 - [Description](#description)
 - [Tech stack and ML concepts used ](#tech_stack)
 - [Local setup](#local_setup)
   - [Prerequisites](#prerequisites)
   - [Set up a virtual environment](#setup_virtual_environment)
-  - [Start the web service](#local_setup)
+- [Running the web service locally](#running_locally)
+  - [Start the web service](#start_web_service)
   - [Verify successful setup](#verify_successful_setup)
-  - [Sending requests to the web service](#sending_requests)
-- [Deployment to the cloud](#deployment)
-- [Load testing](#load_testing)
+  - [Making requests to the web service](#making_requests)
+- [Deploying to the cloud](#cloud_deployment)
 - [Prediction results](#prediction_results)
 
 
-# Description <a name = "description"></a>
+## Description <a name = "description"></a>
 <!---
 Write 1-2 paragraphs describing the purpose of your project.
 -->
@@ -31,7 +31,7 @@ probability.
 The dataset used can be found in Kaggle [here](https://www.kaggle.com/datasets/gauravtopre/bank-customer-churn-dataset/data).
 
 
-# Tech stack and ML concepts used <a name = "tech_stack"></a>
+## Tech stack and ML concepts used <a name = "tech_stack"></a>
 <!---
 A list of software used to build the application and ML concepts used.
 -->
@@ -44,10 +44,13 @@ A list of software used to build the application and ML concepts used.
 * Random Forest
 * Gradient Boosting (XGBoost)
 
-# Running Locally <a name = "running_locally"></a>
 
+## Local setup <a name = "Local_setup"></a>
+<!---
+A step by step series of instruction that tells you how to get the application running locally.
+-->
 
-## Prerequisites <a name = "prerequisites"></a>
+### Prerequisites <a name = "prerequisites"></a>
 <!---
 A list of things you need to install and how to install them. 
 -->
@@ -57,13 +60,7 @@ A list of things you need to install and how to install them.
 * To deploy the web service to the cloud, you will need an AWS account and also be
     authenticated to run AWS CLI commands ([AWS docs](https://docs.aws.amazon.com/cli/latest/userguide/sso-configure-profile-token.html)).
 
-
-## Local setup <a name = "local_setup"></a>
-<!---
-A step by step series of instruction that tells you how to get the application running locally.
--->
-
-1. From your terminal, clone this repository and open the `midterm` directory.
+From your terminal, clone this repository and open the `midterm` directory.
 
 ### Set up virtual environment <a name = "setup_virtual_environment"></a>
 
@@ -71,15 +68,17 @@ A step by step series of instruction that tells you how to get the application r
    ```
    pipenv install
    ```
-3. Activate the virtual environment:
+2. Activate the virtual environment:
    ```
    pipenv shell
    ```
 You will now be able to execute cells in the development.ipynb notebook.
 
 
+## Running the web service locally <a name = "running_locally"></a>
 
-### Starting the churn prediction web service <a name = "start_web_app"></a>
+### Start the web service <a name = "start_web_service"></a>
+
 1. Build the docker image:
    ```
    docker build -t churn-prediction .
@@ -89,7 +88,7 @@ You will now be able to execute cells in the development.ipynb notebook.
    docker run -it --rm -p 9696:9696 churn-prediction
    ```
 
-### Verify the setup was successful <a name = "verify_successful_setup"></a>
+### Verify successful setup <a name = "verify_successful_setup"></a>
 <!---
 Provide an example command to verify that the setup was successful.
 -->
@@ -101,7 +100,7 @@ curl http://localhost:9696/health
 This should return the following response:
 `{"status":"running"}`
 
-### Sending requests to the web service <a name = "sending_requests"></a>
+### Making requests to the web service <a name = "making_requests"></a>
 In a different terminal window, you can make POST requests to the web service to predict
 of a customer is going to churn.
 
@@ -111,7 +110,7 @@ curl -X POST -H "Content-Type: application/json" -d @data/example_customer.json 
 ```
 
 
-## 🚀 Deploying to the cloud <a name = "deployment"></a>
+## 🚀 Deploying to the cloud <a name = "cloud_deployment"></a>
 <!---
 Add additional notes about how to deploy this application to the cloud.
 -->
