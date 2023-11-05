@@ -1,1 +1,1 @@
-# ml-zoomcamp-2023-projects
+# ML Zoomcamp 2023 projects

@@ -1,0 +1,14 @@
+{
+    "customer_id": 15647311,
+    "surname": "Allan",
+    "credit_score": 585,
+    "geography": "France",
+    "gender": "Male",
+    "age": 40,
+    "tenure": 7,
+    "balance": 0.0,
+    "num_of_products": 2,
+    "has_credit_card": 0,
+    "is_active_member": 0,
+    "estimated_salary": 146156.98
+}
