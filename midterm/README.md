@@ -3,7 +3,8 @@
 
 ## Table of Contents
 - [Description](#description)
-- [Tech stack and ML concepts used ](#tech_stack)
+- [Tech stack and ML concepts used](#tech_stack)
+- [Project structure](#project_structure)
 - [Local setup](#local_setup)
   - [Prerequisites](#prerequisites)
   - [Set up a virtual environment](#setup_virtual_environment)
@@ -45,6 +46,39 @@ The dataset used can be found in Kaggle [here](https://www.kaggle.com/datasets/g
 * Gradient Boosting (XGBoost)
 
 
+## Project structure <a name = "project_structure"></a>
+
+```shell
+├── Dockerfile 
+├── Pipfile
+├── Pipfile.lock
+├── README.md
+├── data
+│    ├── bank_customer_churn.csv
+│    └── example_customer.json
+├── development.ipynb
+├── train.py
+├── predict.py
+└── xgboost_model.bin
+```
+
+* **Dockerfile:** Defines a Docker image that bundles the project's dependencies and the
+final churn prediction model. It also sets up a Flask app that runs on port 9696.
+* **Pipfile:** Manages Python dependencies.
+* **Pipfile.lock:** Automatically generated to track exact versions of dependencies.
+* **README.md:** Provides project information and usage instructions.
+* **data:** Directory with project data files.
+  * **bank_customer_churn.csv**: CSV file with data on bank customer churn.
+  * **example_customer.json**: JSON file with data for an example customer. This can be
+  used to make a request to the web service.
+* **development.ipynb:** Notebook for interactive development. This includes data
+preparation, exploratory data analysis, exploring different ML models, and finally, fine
+tuning the parameters and evaluating the performance of each model.
+* **train.py:** Python script to train the final churn prediction model.
+* **predict.py:** Python script to serve the final churn prediction model as a Flask app.
+* **xgboost_model.bin:** Binary file of the churn prediction model. 
+
+
 ## Local setup <a name = "local_setup"></a>
 
 ### Prerequisites <a name = "prerequisites"></a>
@@ -69,6 +103,8 @@ You will now be able to execute cells in the development.ipynb notebook.
 
 
 ## Running the web service locally <a name = "running_locally"></a>
+
+The final 
 
 ### Start the web service <a name = "start_web_service"></a>
 
@@ -99,6 +135,8 @@ Here is an example command:
 curl -X POST -H "Content-Type: application/json" -d @data/example_customer.json http://localhost:9696/predict
 ```
 
+&ast; *the `example_customer.json` file contains an JSON string with details of a single
+customer.*
 
 ## 🚀  Deploying to the cloud <a name = "cloud_deployment"></a>
 We will deploy our web service using Elastic Beanstalk in AWS. See instructions below.
@@ -120,9 +158,9 @@ deployment of this service works.*
    ```
    curl -X POST -H "Content-Type: application/json" -d @data/example_customer.json http://<environment_domain>/predict
    ```
-    &ast; change `<environment_domain>`, to the domain name of the EB environment you
-    have deployed. You can find this in the AWS console or stdout in the terminal after
-    you have created the environment.
+   &ast; change `<environment_domain>`, to the domain name of the EB environment you
+   have deployed. You can find this in the AWS console or stdout in the terminal after
+   you have created the environment.
 
 The EB environment can be terminated with the following command:
 ```
