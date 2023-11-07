@@ -116,6 +116,8 @@ The final
    ```
    docker run -it --rm -p 9696:9696 churn-prediction
    ```
+    
+   &ast;*The Docker container can be terminated at any point using the command `control + C`*
 
 ### Verify successful setup <a name = "verify_successful_setup"></a>
 In a different terminal window, make a GET request to the `/health` endpoint of the 
@@ -125,6 +127,7 @@ curl http://localhost:9696/health
 ```
 This should return the following response:
 `{"status":"running"}`
+
 
 ### Making requests to the web service <a name = "making_requests"></a>
 In a different terminal window, you can make POST requests to the web service to predict
