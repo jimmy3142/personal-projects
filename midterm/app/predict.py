@@ -17,13 +17,14 @@ def predict():
     features = list(dv.get_feature_names_out())
 
     X = dv.transform([customer])
-    d = xgb.DMatrix(X, feature_names=features)
-    y_pred = model.predict(d)
+    d_matrix = xgb.DMatrix(X, feature_names=features)
+    y_pred = model.predict(d_matrix)
     churn = y_pred >= 0.5
 
     result = {
+        "customer_id": customer["customer_id"],
         "churn probability": float(y_pred),
-        "churn": bool(churn)
+        "churn": bool(churn),
     }
     return jsonify(result)
 
