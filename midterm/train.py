@@ -25,30 +25,30 @@ def parse_xgb_output(output):
 
 
 df = (
-    pl.scan_csv("./data/bank_customer_churn.csv")
-    .select(pl.all().exclude("RowNumber", "CustomerId"))
+    pl.scan_csv("./data/bank_customer_churn.csv").select(
+        pl.all().exclude("RowNumber", "CustomerId")
+    )
 ).collect()
 
 
 # Data preparation
 
 df.columns = [column.lower() for column in df.columns]
-df = df.rename({
-    "creditscore": "credit_score",
-    "numofproducts": "num_of_products",
-    "hascrcard": "has_credit_card",
-    "isactivemember": "is_active_member",
-    "estimatedsalary": "estimated_salary",
-    "exited": "churn"
-})
+df = df.rename(
+    {
+        "creditscore": "credit_score",
+        "numofproducts": "num_of_products",
+        "hascrcard": "has_credit_card",
+        "isactivemember": "is_active_member",
+        "estimatedsalary": "estimated_salary",
+        "exited": "churn",
+    }
+)
 
 # Setting up the validation framework
 
 df_full_train, df_test = train_test_split(
-    df,
-    test_size=0.2,
-    shuffle=True,
-    random_state=11
+    df, test_size=0.2, shuffle=True, random_state=11
 )
 y_full_train = df_full_train.select("churn").to_pandas().values
 df_full_train = df_full_train.drop("churn")
@@ -88,10 +88,8 @@ xgb_params = {
     "max_depth": 4,
     "min_child_weight": 10,
     "colsample_bytree": 0.7,
-
     "objective": "binary:logistic",
     "nthread": 8,
-
     "seed": 1,
     "verbosity": 1,
 }
@@ -103,4 +101,3 @@ model = xgb.train(xgb_params, dfulltrain, num_boost_round=155)
 output_file = "xgboost_model.bin"
 with open(output_file, "wb") as file_out:
     pickle.dump((dv, model), file_out)
-
