@@ -8,12 +8,14 @@
 - [Local setup](#local_setup)
   - [Prerequisites](#prerequisites)
   - [Set up a virtual environment](#setup_virtual_environment)
+- [Exploring the data](#explore_the_data)
 - [Running the web service locally](#running_locally)
   - [Start the web service](#start_web_service)
   - [Verify successful setup](#verify_successful_setup)
   - [Making requests to the web service](#making_requests)
 - [Deploying to the cloud](#cloud_deployment)
 - [Prediction results](#prediction_results)
+- [Future improvements](#future_improvements)
 
 
 ## Description <a name = "description"></a>
@@ -49,34 +51,47 @@ The dataset used can be found in Kaggle [here](https://www.kaggle.com/datasets/g
 ## Project structure <a name = "project_structure"></a>
 
 ```shell
-├── Dockerfile 
+├── app/
+│    ├── predict.py
+│    └── streamlit.py
+├── data/
+│    ├── bank_customer_churn.csv
+│    └── example_customer.json
+├── tests/
+│    ├── test_predict.py
+├── .gitignore
+├── development.ipynb
+├── Dockerfile
 ├── Pipfile
 ├── Pipfile.lock
 ├── README.md
-├── data
-│    ├── bank_customer_churn.csv
-│    └── example_customer.json
-├── development.ipynb
 ├── train.py
-├── predict.py
 └── xgboost_model.bin
 ```
 
+* **app/:** Directory containing the churn prediction web service.
+  * **predict.py:** Python script to serve the final churn prediction model as a
+                        Flask app.
+  * **streamlit.py:** Python script to serve the final churn prediction model as a
+                          Streamlit app.
+* **data/:** Directory with project data files.
+  * **bank_customer_churn.csv**: CSV file with data on bank customer churn.
+  * **example_customer.json**: JSON file with data for an example customer. This can be
+* **tests/:** Directory containing unit tests for the app.
+  * **test_predict.py**: Contains unit tests for the functions in app/predict.py.
+* **.gitignore:** Contains a list of files and directories to be ignored by git.
+* **development.ipynb:** Notebook for interactive development. This includes data
+preparation, exploratory data analysis, exploring different ML models, and finally, fine
+tuning the parameters and evaluating the performance of each model.
 * **Dockerfile:** Defines a Docker image that bundles the project's dependencies and the
 final churn prediction model. It also sets up a Flask app that runs on port 9696.
 * **Pipfile:** Manages Python dependencies.
 * **Pipfile.lock:** Automatically generated to track exact versions of dependencies.
 * **README.md:** Provides project information and usage instructions.
-* **data:** Directory with project data files.
-  * **bank_customer_churn.csv**: CSV file with data on bank customer churn.
-  * **example_customer.json**: JSON file with data for an example customer. This can be
   used to make a request to the web service.
-* **development.ipynb:** Notebook for interactive development. This includes data
-preparation, exploratory data analysis, exploring different ML models, and finally, fine
-tuning the parameters and evaluating the performance of each model.
-* **train.py:** Python script to train the final churn prediction model.
-* **predict.py:** Python script to serve the final churn prediction model as a Flask app.
-* **xgboost_model.bin:** Binary file of the churn prediction model. 
+* **train.py:** Python script to train the final churn prediction model and save the
+  model to xgboost_model.bin.
+* **xgboost_model.bin:** Binary file of the final churn prediction model. 
 
 
 ## Local setup <a name = "local_setup"></a>
@@ -99,8 +114,17 @@ From your terminal, clone this repository and open the `midterm` directory.
    ```
    pipenv shell
    ```
-You will now be able to execute cells in the development.ipynb notebook.
+3. Install the git hook scripts for pre-commit:
+   ```
+   pre-commit install
+   ```
 
+## Exploring the data <a name = "exploring_the_data"></a>
+
+With the virtual environment now setup, you will now be able to run the
+development.ipynb notebook. This notebook contains exploratory data analysis, trains
+multiple ML models, tunes the parameters and evaluates performance metrics, and finally
+selects the final model with the best performance.
 
 ## Running the web service locally <a name = "running_locally"></a>
 
