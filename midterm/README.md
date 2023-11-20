@@ -42,6 +42,7 @@ The dataset used can be found in Kaggle [here](https://www.kaggle.com/datasets/g
 * Polars
 * Pipenv
 * Docker
+* Ruff formatter and linter
 * Elastic Beanstalk
 * Logistic Regression
 * Random Forest
@@ -128,7 +129,6 @@ selects the final model with the best performance.
 
 ## Running the web service locally <a name = "running_locally"></a>
 
-The final 
 
 ### Start the web service <a name = "start_web_service"></a>
 
@@ -154,8 +154,8 @@ This should return the following response:
 
 
 ### Making requests to the web service <a name = "making_requests"></a>
-In a different terminal window, you can make POST requests to the web service to predict
-of a customer is going to churn.
+In a different terminal window, you can make HTTP request to the web service using the
+POST method to get predictions about whether a customer is likely to churn.
 
 Here is an example command:
 ```
