@@ -15,13 +15,12 @@
   - [Making requests to the web service](#making_requests)
 - [Deploying to the cloud](#cloud_deployment)
 - [Prediction results](#prediction_results)
-- [Future improvements](#future_improvements)
 
 
 ## Description <a name = "description"></a>
 This project explores different machine learning models to predict customer churn at a
-bank. The parameters on best performing models are tuned and the final churn prediction
-model is served as a web service using AWS Elastic Beanstalk.
+bank. Hyperparameters are tuned on the final churn prediction model and the model is
+served as a web service using AWS Elastic Beanstalk.
 
 The goal of this project is to provide a service to the bank to help understand which
 customers are likely to leave, so that they can send promotional offers to encourage
@@ -60,14 +59,15 @@ The dataset used can be found in Kaggle [here](https://www.kaggle.com/datasets/g
 │    └── example_customer.json
 ├── tests/
 │    ├── test_predict.py
+├── training/
+│    ├── train.py
+│    ├── xgboost_model.bin
 ├── .gitignore
 ├── development.ipynb
 ├── Dockerfile
 ├── Pipfile
 ├── Pipfile.lock
 ├── README.md
-├── train.py
-└── xgboost_model.bin
 ```
 
 * **app/:** Directory containing the churn prediction web service.
@@ -79,7 +79,10 @@ The dataset used can be found in Kaggle [here](https://www.kaggle.com/datasets/g
   * **bank_customer_churn.csv**: CSV file with data on bank customer churn.
   * **example_customer.json**: JSON file with data for an example customer. This can be
 * **tests/:** Directory containing unit tests for the app.
-  * **test_predict.py**: Contains unit tests for the functions in app/predict.py.
+  * **xgboost_model.bin**: The final model saved as a 
+* **training/:** Directory containing a 
+  * **train.py**: A python script to train the final XGBoost model and save as a binary file.
+  * **xgboost_model.bin:**: The Binary file containing the final churn prediction model.
 * **.gitignore:** Contains a list of files and directories to be ignored by git.
 * **development.ipynb:** Notebook for interactive development. This includes data
 preparation, exploratory data analysis, exploring different ML models, and finally, fine
@@ -90,10 +93,6 @@ final churn prediction model. It also sets up a Flask app that runs on port 9696
 * **Pipfile.lock:** Automatically generated to track exact versions of dependencies.
 * **README.md:** Provides project information and usage instructions.
   used to make a request to the web service.
-* **train.py:** Python script to train the final churn prediction model and save the
-  model to xgboost_model.bin.
-* **xgboost_model.bin:** Binary file of the final churn prediction model. 
-
 
 ## Local setup <a name = "local_setup"></a>
 
@@ -193,11 +192,6 @@ The EB environment can be terminated with the following command:
 ```
 eb terminate churn-prediction-env
 ```
-
-Here is a screen recording showing the deployment to Elastic Beanstalk:
-
-https://github.com/jimmy3142/ml-zoomcamp-2023-projects/assets/65279092/c6d79b68-61ec-4611-b40e-d2eaf254f725
-
 
 
 ## Prediction Results <a name = "prediction_results"></a>
