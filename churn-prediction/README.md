@@ -15,6 +15,7 @@
   - [Making requests to the web service](#making_requests)
 - [Deploying to the cloud](#cloud_deployment)
 - [Prediction results](#prediction_results)
+- [Future improvements](#future_improvements)
 
 
 ## Description <a name = "description"></a>
@@ -200,3 +201,15 @@ eb terminate churn-prediction-env
 | Logistic Regression        | 67%                     | -                 |
 | Random Forest              | 86%                     | -                 |
 | Gradient Boosting (XGBoost | 87%                     | 86%               |
+
+
+## ✨  Future improvements <a name = "future_improvements"></a>
+* If this was deployed and used frequently by various people, I could add a Makefile to
+simplify the commands required to run the service.
+* Create a UI so that users can enter their information in and see their churn
+prediction results. 
+* Deploy to k8s or AWS lambda.
+* Provision infra using Terraform
+* Perform cross validation to check how robust the model is
+* Perform some feature engineering to try and further improve the performance.
+* GitHub Actions to deploy a new version of the app
