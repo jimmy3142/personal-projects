@@ -58,8 +58,6 @@ The dataset used can be found in Kaggle [here](https://www.kaggle.com/datasets/g
 ├── data/
 │    ├── bank_customer_churn.csv
 │    └── example_customer.json
-├── tests/
-│    ├── test_predict.py
 ├── training/
 │    ├── train.py
 │    ├── xgboost_model.bin
@@ -79,7 +77,6 @@ The dataset used can be found in Kaggle [here](https://www.kaggle.com/datasets/g
 * **data/:** Directory with project data files.
   * **bank_customer_churn.csv**: CSV file with data on bank customer churn.
   * **example_customer.json**: JSON file with data for an example customer. This can be
-* **tests/:** Directory containing unit tests for the app.
   * **xgboost_model.bin**: The final model saved as a 
 * **training/:** Directory containing a 
   * **train.py**: A python script to train the final XGBoost model and save as a binary file.
@@ -202,14 +199,3 @@ eb terminate churn-prediction-env
 | Random Forest              | 86%                     | -                 |
 | Gradient Boosting (XGBoost | 87%                     | 86%               |
 
-
-## ✨  Future improvements <a name = "future_improvements"></a>
-* If this was deployed and used frequently by various people, I could add a Makefile to
-simplify the commands required to run the service.
-* Create a UI so that users can enter their information in and see their churn
-prediction results. 
-* Deploy to k8s or AWS lambda.
-* Provision infra using Terraform
-* Perform cross validation to check how robust the model is
-* Perform some feature engineering to try and further improve the performance.
-* GitHub Actions to deploy a new version of the app
