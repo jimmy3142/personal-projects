@@ -67,13 +67,12 @@ The dataset used can be found in Kaggle [here](https://www.kaggle.com/datasets/g
 ├── README.md
 ```
 
-* **app/:** Directory containing the churn prediction web service.
-  * **predict.py:** Python script to serve the final churn prediction model as a
-                        Flask app.
-* **data/:** Directory with project data files.
+* **app/:**
+  * **predict.py:** Python script to serve the final churn prediction model as a Flask app.
+* **data/:**
   * **bank_customer_churn.csv**: CSV file with data on bank customer churn.
   * **example_customer.json**: JSON file with data for an example customer. This can be
-* **training/:** Directory containing a 
+* **training/:** 
   * **train.py**: A python script to train the final XGBoost model and save as a binary file.
   * **xgboost_model.bin:**: The Binary file containing the final churn prediction model.
 * **.gitignore:** Contains a list of files and directories to be ignored by git.
