@@ -1,8 +1,16 @@
-# PyCharm
-.idea*
-
-.DS_Store
+**/.DS_Store
 
 # cache directories
 .pytest_cache/
 .ruff_cache/
+
+# Local .terraform directories
+**/.terraform/*
+**/.terraform.lock.hcl
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# PyCharm
+.idea
