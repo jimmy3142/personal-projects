@@ -95,7 +95,7 @@ final churn prediction model. It also sets up a Flask app that runs on port 9696
 * To deploy the web service to the cloud, you will need an AWS account and also be
     authenticated to run AWS CLI commands ([AWS docs](https://docs.aws.amazon.com/cli/latest/userguide/sso-configure-profile-token.html)).
 
-From your terminal, clone this repository and open the `midterm` directory.
+From your terminal, clone this repository and open the `churn_prediction` directory.
 
 ### Set up virtual environment <a name = "setup_virtual_environment"></a>
 1. Create a virtual environment and install dependencies:
