@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  namespace: credit-card-fraud-detect
+  name: credit-card-fraud-detect
+
+spec:
+  type: LoadBalancer
+  selector:
+    app: credit-card-fraud-detect
+  ports:
+  - port: 80
+    targetPort: 8000

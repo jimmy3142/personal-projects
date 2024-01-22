@@ -1,0 +1,91 @@
+version: "3.9"
+services:
+
+  minio:
+    image: minio/minio
+    container_name: mlflow_minio
+    expose:
+      - "9000"
+    ports:
+      - "9000:9000"
+      # MinIO Console is available at http://localhost:9001
+      - "9001:9001"
+    networks:
+      - credit_card_fraud_detect
+    environment:
+      MINIO_ROOT_USER: "user"
+      MINIO_ROOT_PASSWORD: "password"
+    healthcheck:
+      test: timeout 5s bash -c ':> /dev/tcp/127.0.0.1/9000' || exit 1
+      interval: 1s
+      timeout: 10s
+      retries: 5
+    command: server /data --console-address ":9001"
+
+  minio_create_bucket:
+    image: minio/mc
+    depends_on:
+      minio:
+        condition: service_healthy
+    networks:
+      - credit_card_fraud_detect
+    # unable to pass a bucket environment variable here
+    entrypoint: >
+      bash -c "
+      mc alias set minio http://minio:9000 user password &&
+      if mc ls minio/mlflow; then
+       echo 'bucket already exists'
+      else
+       mc mb minio/mlflow
+      fi
+      "
+
+  mlflow_db:
+    image: postgres:latest
+    container_name: mlflow_db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_PORT: ${POSTGRES_PORT}
+      POSTGRES_NAME: ${POSTGRES_NAME}
+    ports:
+      - "5432:5432"
+    networks:
+      - credit_card_fraud_detect
+    volumes:
+      - postgresql_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-p", "${POSTGRES_PORT}", "-U", "${POSTGRES_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 3
+
+  mlflow_server:
+    build: ./mlflow
+    image: mlflow-server:v1.0.0
+    container_name: mlflow_server
+    depends_on:
+        - mlflow_db
+        - minio_create_bucket
+    expose:
+      - "5000"
+    ports:
+        - "5001:5000"
+    networks:
+      - credit_card_fraud_detect
+    environment:
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - POSTGRES_HOST
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_PORT
+      - POSTGRES_DB_NAME
+      - MLFLOW_PORT
+      - MLFLOW_ARTIFACT_URI
+      - MLFLOW_S3_ENDPOINT_URL
+volumes:
+    postgresql_db_data:
+networks:
+  credit_card_fraud_detect:
+    name: credit_card_fraud_detect

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  namespace: credit-card-fraud-detect
+  name: credit-card-fraud-detect-deployment
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: credit-card-fraud-detect
+  template:
+    metadata:
+      labels:
+        app: credit-card-fraud-detect
+    spec:
+      containers:
+      - name: credit-card-fraud-detect-pod
+        image: credit-card-fraud-detect:v1.0.0
+        volumeMounts:
+        - mountPath: /ml_models
+          name: ml-models-volume
+          readOnly: true
+        ports:
+        - containerPort: 8000
+      volumes:
+        - name: ml-models-volume
+          hostPath:
+            path: /ml_models/
+            type: Directory

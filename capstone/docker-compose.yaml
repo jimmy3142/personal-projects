@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+
+  credit_card_fraud_detect:
+    image: credit-card-fraud-detect:v1.0.0
+    build: .
+    container_name: credit-card-fraud-detect
+    ports:
+        - "8001:8000"
+    networks:
+      - credit_card_fraud_detect
+    environment:
+      RUN_ID: ${RUN_ID}
+      MLFLOW_HOST: mlflow_server:5000
+      MLFLOW_ENABLED: True
+
+networks:
+  credit_card_fraud_detect:
+    name: credit_card_fraud_detect
+    external: true
