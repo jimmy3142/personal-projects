@@ -1,4 +1,4 @@
-# Bank customer churn prediction
+# Credit Card Fraud Detection
 
 
 ## Table of Contents
@@ -16,7 +16,6 @@
 - [Deploying to the cloud](#cloud_deployment)
   - [Prerequisites](#prerequisites)
 - [Prediction results](#prediction_results)
-- [Future improvements](#future_improvements)
 
 
 
