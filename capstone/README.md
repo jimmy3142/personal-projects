@@ -51,7 +51,7 @@ cardholders' identities.
 │    ├── predict.py  -> Python script to serve the credit-card-fraud-detect model as a FastAPI web service
 │    ├── test.py     -> Python script to make a sample request to the credit-card-fraud-detect app
 ├── data/
-│    ├── creditcard_2023.csv   -> The dataset from the Kaggle url above needs to be downloaded and saved here.
+│    ├── creditcard_2023.csv   -> The dataset from the Kaggle url above should be downloaded, unzipped and saved here.
 ├── docs/
 │    ├── local_setup_docker.png   -> architecture diagram of the local Docker setup
 ├── k8s/
@@ -92,8 +92,8 @@ cardholders' identities.
 * Docker - Installation instructions [here](https://docs.docker.com/engine/install/)
     Note, you also need Docker Compose. If you install Docker Desktop using the link
     above, this will come with Docker Compose out the box.
-Download the dataset from the Kaggle url [here](https://www.kaggle.com/datasets/nelgiriyewithana/credit-card-fraud-detection-dataset-2023?resource=download) 
-  and save it in data/creditcard_2023.csv
+* Download the dataset from the Kaggle url [here](https://www.kaggle.com/datasets/nelgiriyewithana/credit-card-fraud-detection-dataset-2023?resource=download), unzip the file and save it in
+    the following location: data/creditcard_2023.csv
 
 From your terminal, clone this repository and run `cd capstone` in the terminal.
 

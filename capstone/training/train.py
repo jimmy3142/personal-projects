@@ -13,7 +13,7 @@ import logging
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 
 input_file = "./data/creditcard_2023.csv"
-output_file = "./mlmodels/pipeline.pkl"
+output_file = "./ml_models/pipeline.pkl"
 
 
 def extract_data(input_file):
