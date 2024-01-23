@@ -232,8 +232,7 @@ See instructions below.
 
 
 ## Prediction Results <a name = "prediction_results"></a>
-| Model                  | Validation Set RMSE | Test Set Accuracy |
-|------------------------|------------------|-------------------|
-| Random Forest          | 0.013            | -                 |
-
+| Model                  | Validation Set RMSE | Test Set Accuracy  |
+|------------------------|---------------------|--------------------|
+| Random Forest          | 0.013               | -                  |
 

@@ -16,7 +16,9 @@ logging.basicConfig(level=logging.INFO, format="%(message)s")
 
 mlflow_enabled = os.getenv("MLFLOW_ENABLED")
 
+
 if mlflow_enabled:
+    print("mlflow_enabled")
     MLFLOW_TRACKING_URI = f"http://{os.getenv('MLFLOW_HOST')}"
     mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
     RUN_ID = os.getenv("RUN_ID")
@@ -31,11 +33,12 @@ def load_model():
             model = pickle.load(file_in)
     return model
 
+logging.info("Loading the ML model artifacts...")
+model = load_model()
+logging.info("Successfully loaded the ML model artifacts")
+
 
 def apply_model(input_data: dict[str, int | float]):
-    logging.info("Loading the ML model artifacts...")
-    model = load_model()
-    logging.info("Successfully loaded the ML model artifacts")
     logging.info("Applying the model...")
     preds = model.predict(input_data)
     return preds[0]
@@ -53,7 +56,7 @@ def predict_endpoint(model_input: ModelInput):
     logging.info("Successfully validated the input data")
     try:
         pred = apply_model(request)
-        is_fraud = pred == 1
+        is_fraud = (pred == 1)
         if mlflow_enabled:
             result = {"is_fraud": is_fraud, "model_version": RUN_ID}
         else:
