@@ -15,10 +15,13 @@
   - [Making requests to the web service](#making_requests)
 - [Deploying to the cloud](#cloud_deployment)
   - [Prerequisites](#prerequisites)
-- [Score](#scores)
+- [Scores](#scores)
+- [Future improvements](#future_improvements)
 
 
-⚠️ The instructions in this project assumes MacOS is the operating system used 
+---
+
+👀 The instructions in this project assume MacOS is the operating system used 
 (sorry Windows users!)
 
 ## Description <a name = "description"></a>
@@ -107,10 +110,10 @@ capstone directory
 
 ### Set up virtual environment and install dependencies <a name = "setup_virtual_environment"></a>
 ```
-make setup
+make setup-env-local
 ```
 
-## Exploring the data <a name = "exploring_the_data"></a>
+## 🔍 Exploring the data <a name = "exploring_the_data"></a>
 
 First we need to start MLflow, which is a tool we will use for ML experimentation in our
 development Notebook.
@@ -137,7 +140,7 @@ metrics, and finally selects the final model with the best performance.
 You can access the MLflow UI at the following address: http://localhost:5001
 
 
-## Running the web service locally <a name = "running_locally"></a>
+## 💻 Running the web service locally <a name = "running_locally"></a>
 
 Here is a diagram showing what the architecture will look like once all our containers
 have been created. We will keep our MLflow containers running from the previous step,
@@ -200,7 +203,7 @@ python app/test.py
 ```
 
 
-## 🚀  Deploying to the cloud <a name = "cloud_deployment"></a>
+## 🚀 Deploying to the cloud <a name = "cloud_deployment"></a>
 
 ### Prerequisites <a name = "prerequisites"></a>
 * Install Minikube - instructions [here](https://minikube.sigs.k8s.io/docs/start/#:~:text=1-,Installation,-Click%20on%20the)
@@ -237,7 +240,7 @@ See instructions below.
     ```
 
 
-## Scores <a name = "scores"></a>
+## 🥁 ML Scores <a name = "scores"></a>
 | Model                  | Validation Set RMSE | Test Set Accuracy  |
 |------------------------|---------------------|--------------------|
 | Random Forest          | 0.013               | -                  |

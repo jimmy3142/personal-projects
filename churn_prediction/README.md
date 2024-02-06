@@ -15,6 +15,11 @@
   - [Making requests to the web service](#making_requests)
 - [Deploying to the cloud](#cloud_deployment)
 - [Prediction results](#prediction_results)
+- [Future improvements](#future_improvements)
+
+
+⚠️ The instructions in this project assumes MacOS is the operating system used 
+(sorry Windows users!)
 
 
 ## Description <a name = "description"></a>
@@ -53,9 +58,12 @@ The dataset used can be found in Kaggle [here](https://www.kaggle.com/datasets/g
 ```shell
 ├── app/
 │    ├── predict.py
+│    └── streamlit.py
 ├── data/
 │    ├── bank_customer_churn.csv
 │    └── example_customer.json
+├── tests/
+│    ├── test_predict.py
 ├── training/
 │    ├── train.py
 │    ├── xgboost_model.bin
@@ -69,9 +77,12 @@ The dataset used can be found in Kaggle [here](https://www.kaggle.com/datasets/g
 
 * **app/:**
   * **predict.py:** Python script to serve the final churn prediction model as a Flask app.
+  * **streamlit.py:** Python script to serve the final churn prediction model as a
+                          Streamlit app.
 * **data/:**
   * **bank_customer_churn.csv**: CSV file with data on bank customer churn.
   * **example_customer.json**: JSON file with data for an example customer. This can be
+* **tests/:**
 * **training/:** 
   * **train.py**: A python script to train the final XGBoost model and save as a binary file.
   * **xgboost_model.bin:**: The Binary file containing the final churn prediction model.
@@ -95,7 +106,7 @@ final churn prediction model. It also sets up a Flask app that runs on port 9696
 * To deploy the web service to the cloud, you will need an AWS account and also be
     authenticated to run AWS CLI commands ([AWS docs](https://docs.aws.amazon.com/cli/latest/userguide/sso-configure-profile-token.html)).
 
-From your terminal, clone this repository and open the `churn_prediction` directory.
+From your terminal, clone this repository and open the `midterm` directory.
 
 ### Set up virtual environment <a name = "setup_virtual_environment"></a>
 1. Create a virtual environment and install dependencies:
@@ -111,14 +122,14 @@ From your terminal, clone this repository and open the `churn_prediction` direct
    pre-commit install
    ```
 
-## Exploring the data <a name = "exploring_the_data"></a>
+## 🔍 Exploring the data <a name = "exploring_the_data"></a>
 
 With the virtual environment now setup, you will now be able to run the
 development.ipynb notebook. This notebook contains exploratory data analysis, trains
 multiple ML models, tunes the parameters and evaluates performance metrics, and finally
 selects the final model with the best performance.
 
-## Running the web service locally <a name = "running_locally"></a>
+## 💻 Running the web service locally <a name = "running_locally"></a>
 
 
 ### Start the web service <a name = "start_web_service"></a>
@@ -140,12 +151,12 @@ churn prediction service:
 ```
 curl http://localhost:9696/health
 ```
-This should return the following response:
-`{"status":"running"}`
+This should return the following response if the endpoint is ready to accept requests:
+`{"status": "healthy!"}`
 
 
 ### Making requests to the web service <a name = "making_requests"></a>
-In a different terminal window, you can make HTTP request to the web service using the
+In a different terminal window, you can make HTTP requests to the web service using the
 POST method to get predictions about whether a customer is likely to churn.
 
 Here is an example command:
@@ -186,10 +197,11 @@ eb terminate churn-prediction-env
 ```
 
 
-## Prediction Results <a name = "prediction_results"></a>
+## 🥁 ML Predictions results <a name = "prediction_results"></a>
 | Model                      | Validation Set Accuracy | Test Set Accuracy |
 |----------------------------|-------------------------|-------------------|
 | Logistic Regression        | 67%                     | -                 |
 | Random Forest              | 86%                     | -                 |
 | Gradient Boosting (XGBoost | 87%                     | 86%               |
+
 
