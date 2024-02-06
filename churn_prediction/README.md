@@ -205,3 +205,10 @@ eb terminate churn-prediction-env
 | Gradient Boosting (XGBoost | 87%                     | 86%               |
 
 
+## ✨  Future improvements <a name = "future_improvements"></a>
+* Perform cross validation to check how robust the model is
+* Apply feature engineering to try and further improve the model performance.
+* Add unit tests to train.py
+* Provision infra using Terraform
+* Create a Streamlit frontend that users can enter their information in and see their
+    churn prediction results.

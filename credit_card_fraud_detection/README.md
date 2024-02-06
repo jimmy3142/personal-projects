@@ -45,7 +45,7 @@ cardholders' identities.
 * Pipenv
 * Docker & Docker Compose
 * Ruff formatter and linter
-* Kubernetes
+* Kubernetes (k8s)
 * Random Forest
 
 
@@ -245,3 +245,11 @@ See instructions below.
 |------------------------|---------------------|--------------------|
 | Random Forest          | 0.013               | -                  |
 
+
+## ✨  Future improvements <a name = "future_improvements"></a>
+* Provision a k8s cluster in AWS (EKS) using Terraform and deploy the CC Fraud Detection
+    app.
+* Deploy MLflow to AWS. This will require provisioning an RDS instance, s3 bucket, and
+    another k8s Deployment for the MLflow server.
+* Add unit tests to train.py
+* GitHub Actions to deploy a new version of the app
