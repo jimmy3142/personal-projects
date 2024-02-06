@@ -18,6 +18,8 @@
 - [Prediction results](#prediction_results)
 
 
+⚠️ The instructions in this project assumes MacOS is the operating system used 
+(sorry Windows users!)
 
 ## Description <a name = "description"></a>
 
@@ -54,7 +56,8 @@ cardholders' identities.
 │    ├── creditcard_2023.csv   -> The dataset from the Kaggle url above should be downloaded, unzipped and saved here.
 ├── docs/
 │    ├── local_setup_docker.png   -> architecture diagram of the local Docker setup
-├── k8s/
+├── k8s_cloud/
+├── k8s_local/
 │    ├── app/  -> Kubernetes manifest files for the credit-card-fraud-detect app
 │         ├── deployment.yaml  -> Kubernetes manifest file the Deployment
 │         ├── namespace.yaml   -> Kubernetes manifest file for a namespace dedicated for the credit-card-fraud-detect app
@@ -205,9 +208,12 @@ python app/test.py
 We will deploy our web service using a local Kubernetes cluster (Minikube).
 See instructions below.
 
+> 💡 you will need to have the credit-card-fraud-detect:v1.0.0 Docker image built locally
+> from the previous section before running this.
+
 1. Setup a local minikube cluster:
     ```
-    setup-local-k8s
+    setup-k8-local
     ```
 
 2. Setup port forwarding:
@@ -227,7 +233,7 @@ See instructions below.
 
 4. Tear down the Minikube cluster:
     ```
-    destroy-local-k8s
+    destroy-k8s-local
     ```
 
 
@@ -236,3 +242,12 @@ See instructions below.
 |------------------------|---------------------|--------------------|
 | Random Forest          | 0.013               | -                  |
 
+
+# ## ✨  Future improvements <a name = "future_improvements"></a>
+# * Read this: https://fraud-detection-handbook.github.io/fraud-detection-handbook/Chapter_3_GettingStarted/SimulatedDataset.html#saving-of-dataset
+# * Add unit tests to train.py
+# * Do I need to change the port on the host that connects to the app container?
+# * Mention that the API can be tested directly in the browser using the built-in
+#     Swagger UI, accessible at http://localhost:8000/docs.
+# * Add warnings before anything is executed, such as, 
+#     "(Before doing that make sure port 80 is not occupied!)"

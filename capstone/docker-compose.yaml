@@ -4,9 +4,11 @@ services:
   credit_card_fraud_detect:
     image: credit-card-fraud-detect:v1.0.0
     build: .
-    container_name: credit-card-fraud-detect
+    container_name: credit_card_fraud_detect
+#    tty: true
+#    stdin_open: true
     ports:
-        - "8001:8000"
+        - "8000:8000"
     networks:
       - credit_card_fraud_detect
     environment:

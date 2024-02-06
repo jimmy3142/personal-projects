@@ -1,6 +1,6 @@
 import requests
 
-url = "http://localhost:8001/predict"
+url = "http://localhost:8000/predict"
 
 transaction = {  # noqa
     "id": 310,

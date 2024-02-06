@@ -9,9 +9,12 @@ RUN apt-get update \
 COPY ["Pipfile", "Pipfile.lock", "./"]
 RUN pipenv install --system --deploy
 
+ENV PYTHONPATH=.
+
 WORKDIR capstone
 
 COPY ["app/predict.py", "./app/"]
-COPY ["schemas/credit_card_transaction.py", "./schemas/"]
+COPY ["schemas", "./schemas/"]
+COPY ["ml_models", "./ml_models/"]
 
-ENTRYPOINT [ "uvicorn", "app.predict:app", "--host=0.0.0.0" ]
+ENTRYPOINT [ "python", "./app/predict.py" ]

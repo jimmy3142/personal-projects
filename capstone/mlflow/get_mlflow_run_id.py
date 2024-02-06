@@ -1,6 +1,8 @@
 from mlflow.entities import ViewType
 from mlflow.tracking import MlflowClient
+import logging
 
+logging.basicConfig(level=logging.INFO, format="%(message)s")
 
 EXPERIMENT_NAME = "credit-card-fraud-detection"
 MLFLOW_TRACKING_URI = "http://localhost:5001"
@@ -26,4 +28,4 @@ def get_run_id(_experiment_id: str):
 
 if __name__ == "__main__":
     experiment_id = str(get_experiment_id(EXPERIMENT_NAME))
-    print(get_run_id(experiment_id))
+    logging.info(get_run_id(experiment_id))

@@ -22,6 +22,8 @@ Pygments = "~=2.17.2"
 ruff = "~=0.1.5"
 pre-commit = "~=3.5.0"
 isort = "~=5.13.2"
+google-auth = "~=2.27.0"
+google-cloud-storage = "~=2.14.0"
 
 [dev-packages]
 
