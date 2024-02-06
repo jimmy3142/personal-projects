@@ -15,7 +15,7 @@
   - [Making requests to the web service](#making_requests)
 - [Deploying to the cloud](#cloud_deployment)
   - [Prerequisites](#prerequisites)
-- [Prediction results](#prediction_results)
+- [Score](#scores)
 
 
 ⚠️ The instructions in this project assumes MacOS is the operating system used 
@@ -237,17 +237,8 @@ See instructions below.
     ```
 
 
-## Prediction Results <a name = "prediction_results"></a>
+## Scores <a name = "scores"></a>
 | Model                  | Validation Set RMSE | Test Set Accuracy  |
 |------------------------|---------------------|--------------------|
 | Random Forest          | 0.013               | -                  |
 
-
-# ## ✨  Future improvements <a name = "future_improvements"></a>
-# * Read this: https://fraud-detection-handbook.github.io/fraud-detection-handbook/Chapter_3_GettingStarted/SimulatedDataset.html#saving-of-dataset
-# * Add unit tests to train.py
-# * Do I need to change the port on the host that connects to the app container?
-# * Mention that the API can be tested directly in the browser using the built-in
-#     Swagger UI, accessible at http://localhost:8000/docs.
-# * Add warnings before anything is executed, such as, 
-#     "(Before doing that make sure port 80 is not occupied!)"
